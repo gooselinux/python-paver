@@ -1,0 +1,12 @@
+diff -up Paver-1.0/paver/tasks.py.py2.4 Paver-1.0/paver/tasks.py
+--- Paver-1.0/paver/tasks.py.py2.4	2009-04-13 13:12:28.000000000 -0700
++++ Paver-1.0/paver/tasks.py	2009-04-13 13:12:43.000000000 -0700
+@@ -207,7 +207,7 @@ def _import_task(taskname):
+     full_mod_name = ".".join(parts[:-1])
+     mod_name = parts[-2]
+     try:
+-        module = __import__(full_mod_name, fromlist=[mod_name])
++        module = __import__(full_mod_name, globals(), locals(), [mod_name])
+     except ImportError:
+         return None
+     return getattr(module, func_name, None)
